@@ -31,7 +31,7 @@ function divide(a, b) {
 
 // Create variables for each calculator operation
 let operandFirst = 3;
-let operator = "+";
+let operator = "/";
 let operandSecond = 5;
 
 // create a function called operate that calls these three variables
@@ -46,4 +46,9 @@ let operationMappings = {
   "/": divide,
 };
 
-function operate(operandA, operandB, operator) {}
+function operate(operandA, operandB, operator) {
+  if (operator in operationMappings) {
+    let operation = operationMappings[operator];
+    return operation(operandA, operandB);
+  }
+}
