@@ -30,6 +30,20 @@ function divide(a, b) {
 }
 
 // Create variables for each calculator operation
-let operandFirst;
-let operator;
-let operandSecond;
+let operandFirst = 3;
+let operator = "+";
+let operandSecond = 5;
+
+// create a function called operate that calls these three variables
+// and apt function from above
+
+// Create an object that contain mappings of operator and function
+
+let operationMappings = {
+  "+": sum,
+  "-": subtract,
+  "*": multiply,
+  "/": divide,
+};
+
+function operate(operandA, operandB, operator) {}
