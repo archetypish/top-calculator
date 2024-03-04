@@ -21,4 +21,18 @@ button {
   cursor: pointer;
 }
 
+body {
+  font-size: 16px;
+  font-family: "Courier New", Courier, monospace;
+}
+
 /* Typography */
+.display-text {
+  font-size: 48px;
+}
+
+.btn {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 32px;
+  border: 2px solid black;
+}
