@@ -21,9 +21,16 @@ button {
   cursor: pointer;
 }
 
+/* Global */
+
 body {
   font-size: 16px;
   font-family: "Courier New", Courier, monospace;
+}
+
+.container {
+  width: 600px;
+  margin: 0 auto;
 }
 
 /* Typography */
@@ -35,4 +42,78 @@ body {
   font-family: "Courier New", Courier, monospace;
   font-size: 32px;
   border: 2px solid black;
+}
+
+/* Layout */
+
+.calculator {
+  width: 500px;
+  border: 2px solid black;
+}
+
+.display {
+  border: 2px solid black;
+}
+
+.control {
+  display: flex;
+}
+
+/* describe the control layout */
+
+.column {
+  flex: 3 1 0;
+}
+.func {
+  flex: 1 1 0;
+}
+
+/* organize the all clear and clear btns */
+
+.clear {
+  display: flex;
+}
+
+.clear li:first-child {
+  flex: 2 1 0;
+}
+
+.clear li:last-child {
+  flex: 1 1 0;
+}
+
+/* Make the btn grow inside list item */
+li {
+  display: flex;
+}
+li .btn {
+  flex-grow: 1;
+  height: 100px;
+}
+
+/* make the digits line up */
+.digits {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.digits > * {
+  flex: 1 1 33.3%;
+}
+
+/* Apply padding and margin to display */
+.display-text {
+  padding: 20px;
+  line-height: 1.2;
+  word-wrap: break-word;
+  text-align: right;
+}
+/* Apply bc */
+.btn-allclear {
+  background-color: #ee8114;
+}
+
+/* calculator */
+.calculator {
+  margin: 32px 0;
 }
