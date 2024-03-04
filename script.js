@@ -28,3 +28,8 @@ function subtract(a, b) {
 function divide(a, b) {
   return a / b;
 }
+
+// Create variables for each calculator operation
+let operandFirst;
+let operator;
+let operandSecond;
