@@ -37,8 +37,6 @@ let operandSecond;
 // create a function called operate that calls these three variables
 // and apt function from above
 
-// Create an object that contain mappings of operator and function
-
 let operationMappings = {
   "+": sum,
   "-": subtract,
@@ -53,10 +51,6 @@ function operate(operandA, operandB, operator) {
   }
 }
 
-// Create the functions that populate the display when you
-// click the number buttons. You should be storing the
-// ‘display value’ in a variable somewhere for use in the next step.
-
 // Get the DOM object for all the calculator keys
 
 // digits
@@ -68,21 +62,21 @@ let displayValue;
 
 // loop over digits and apply click event listener to each digit button
 // for click event, run a callback to print the text content on display text
-function updateDisplay(event) {
+function appendDisplay(event) {
   displayText.textContent += event.target.textContent;
   // store the display value to use later
   displayValue = displayText.textContent;
 }
 
 digits.forEach((item) => {
-  item.addEventListener("click", updateDisplay);
+  item.addEventListener("click", appendDisplay);
 });
 
 // calculations
 const btnFunc = document.querySelectorAll(".btn-func");
 
-btnFunc.forEach((item) => {
-  item.addEventListener("click", (event) => {
+/*
+(event) => {
     let operandList = getOperandsIntoList(displayValue);
     console.log(operandList);
     // check if the expression is complete
@@ -100,8 +94,18 @@ btnFunc.forEach((item) => {
     // store new operator variable
     operator = event.target.textContent;
   });
-  // if there is an operator and 2 operands perform computation
-  // otherwise just update display
+
+*/
+
+btnFunc.forEach((item) => {
+  item.addEventListener("click", (event) => {
+    // first evaluate expression if it exists
+    getOutput(displayValue);
+
+    // update the display area with operator
+    appendDisplay(event);
+    operator = event.target.textContent;
+  });
 });
 
 // others
@@ -112,13 +116,20 @@ function getOperandsIntoList(str) {
   return lst.map((item) => parseInt(item));
 }
 
-function computeOutput(displayValue) {
+function getOutput(displayValue) {
   let operandList = getOperandsIntoList(displayValue);
-  return operate(parseInt(operandList[0]), parseInt(operandList[1]), operator);
+  if (operandList.length > 1) {
+    let result = operate(
+      parseInt(operandList[0]),
+      parseInt(operandList[1]),
+      operator
+    );
+    displayText.textContent = result;
+  }
 }
 
 btnCompute.addEventListener("click", () => {
-  displayText.textContent = computeOutput(displayValue);
+  getOutput(displayValue);
 });
 
 // Clear Functionality
