@@ -47,7 +47,8 @@ let operationMappings = {
 function operate(operandA, operandB, operator) {
   if (operator in operationMappings) {
     let operation = operationMappings[operator];
-    return operation(operandA, operandB);
+    let result = operation(operandA, operandB);
+    return Math.round(result * 1000) / 1000;
   }
 }
 
