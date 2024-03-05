@@ -80,28 +80,6 @@ digits.forEach((item) => {
 // calculations
 const btnFunc = document.querySelectorAll(".btn-func");
 
-/*
-(event) => {
-    let operandList = getOperandsIntoList(displayValue);
-    console.log(operandList);
-    // check if the expression is complete
-    if (operandList.length === 2) {
-      // if the expression is complete, then compute it
-      // display the computed number
-      // add the operator entered in the display
-      computeOutput();
-      updateDisplay(event);
-    } else {
-      // if the expression is not complete
-      // add the operator entered in the display
-      updateDisplay(event);
-    }
-    // store new operator variable
-    operator = event.target.textContent;
-  });
-
-*/
-
 btnFunc.forEach((item) => {
   item.addEventListener("click", (event) => {
     // first evaluate expression if it exists

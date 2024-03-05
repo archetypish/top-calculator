@@ -122,3 +122,34 @@ li .btn {
 .display-text {
   min-height: 150px;
 }
+
+/* Colors to numbers */
+.btn-digit {
+  background-color: #c1eff0;
+}
+
+.btn-digit:active {
+  background-color: #92b4b4;
+}
+
+.btn-func,
+.btn-eq {
+  background-color: #dfffcc;
+}
+
+.btn-func:active,
+.btn-eq:active {
+  background-color: #98ae8c;
+}
+
+.btn-clear {
+  background-color: #dfdfdf;
+}
+
+.btn-clear:active {
+  background-color: #b3b3b3;
+}
+
+.display {
+  background-color: #fffdea;
+}
