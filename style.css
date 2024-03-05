@@ -117,3 +117,8 @@ li .btn {
 .calculator {
   margin: 32px 0;
 }
+
+/* Give a fixed height to displaytext */
+.display-text {
+  min-height: 150px;
+}

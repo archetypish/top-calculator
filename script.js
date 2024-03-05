@@ -64,23 +64,50 @@ const digits = document.querySelectorAll(".btn-digit");
 
 // display value
 const displayText = document.querySelector(".display-text");
+let displayValue;
 
 // loop over digits and apply click event listener to each digit button
+// for click event, run a callback to print the text content on display text
 digits.forEach((item) => {
   item.addEventListener("click", (event) => {
-    console.log(event.target.textContent);
+    // console.log(event.target.textContent);
     displayText.textContent += event.target.textContent;
+    // store the display value to use later
+    displayValue = displayText.textContent;
   });
 });
-// for click event, run a callback to print the text content on display text
 
-// calcullations
-const btnEq = document.querySelector(".btn-eq");
-const btnAdd = document.querySelector(".btn-add");
-const btnSubtract = document.querySelector(".btn-subtract");
-const btnMultiply = document.querySelector(".btn-multiply");
-const btnDivide = document.querySelector(".btn-divide");
+// calculations
+const btnFunc = document.querySelectorAll(".btn-func");
 
-// clear
+btnFunc.forEach((item) => {
+  item.addEventListener("click", (event) => {
+    // console.log(event.target.textContent);
+    displayText.textContent += ` ${event.target.textContent} `;
+    // store the operator
+    operator = event.target.textContent;
+    // store the display value to use later
+    displayValue = displayText.textContent;
+  });
+});
+
+// others
+const btnCompute = document.querySelector(".btn-eq");
 const btnAllClear = document.querySelector(".btn-allclear");
 const btnClear = document.querySelector(".btn-clear");
+
+// Make the calculator work
+// once the equal button is clicked:
+// Store the values and the operator
+// call the operator function
+// update the display text with the solution
+let operandList;
+
+btnCompute.addEventListener("click", (event) => {
+  operandList = displayValue.split(operator);
+  displayText.textContent = operate(
+    parseInt(operandList[0]),
+    parseInt(operandList[1]),
+    operator
+  );
+});
