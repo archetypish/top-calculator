@@ -30,9 +30,9 @@ function divide(a, b) {
 }
 
 // Create variables for each calculator operation
-let operandFirst = 3;
-let operator = "/";
-let operandSecond = 5;
+let operandFirst;
+let operator;
+let operandSecond;
 
 // create a function called operate that calls these three variables
 // and apt function from above
@@ -69,7 +69,6 @@ let displayValue;
 // loop over digits and apply click event listener to each digit button
 // for click event, run a callback to print the text content on display text
 function updateDisplay(event) {
-  // console.log(event.target.textContent);
   displayText.textContent += event.target.textContent;
   // store the display value to use later
   displayValue = displayText.textContent;
@@ -84,9 +83,22 @@ const btnFunc = document.querySelectorAll(".btn-func");
 
 btnFunc.forEach((item) => {
   item.addEventListener("click", (event) => {
-    // update operator variable
+    let operandList = getOperandsIntoList(displayValue);
+    console.log(operandList);
+    // check if the expression is complete
+    if (operandList.length === 2) {
+      // if the expression is complete, then compute it
+      // display the computed number
+      // add the operator entered in the display
+      computeOutput();
+      updateDisplay(event);
+    } else {
+      // if the expression is not complete
+      // add the operator entered in the display
+      updateDisplay(event);
+    }
+    // store new operator variable
     operator = event.target.textContent;
-    updateDisplay(event);
   });
   // if there is an operator and 2 operands perform computation
   // otherwise just update display
@@ -94,30 +106,22 @@ btnFunc.forEach((item) => {
 
 // others
 const btnCompute = document.querySelector(".btn-eq");
-const btnAllClear = document.querySelector(".btn-allclear");
-const btnClear = document.querySelector(".btn-clear");
 
-// Make the calculator work
-// once the equal button or second operator button is clicked:
-// Store the 2 values and the operator on screen
-// call the operator function
-// update the display text with the solution
-// continue with next set of operator and operand
-
-function computeOutput(event) {
-  // get the operands and operator
-
-  // if you have the operator then it is pretty easy to split it
-  console.log(typeof displayValue);
-  let operandList = displayValue.split(operator);
-  console.log(
-    operate(parseInt(operandList[0]), parseInt(operandList[1]), operator)
-  );
-  displayText.textContent = operate(
-    parseInt(operandList[0]),
-    parseInt(operandList[1]),
-    operator
-  );
+function getOperandsIntoList(str) {
+  let lst = str.split(operator);
+  return lst.map((item) => parseInt(item));
 }
 
-btnCompute.addEventListener("click", computeOutput);
+function computeOutput(displayValue) {
+  let operandList = getOperandsIntoList(displayValue);
+  return operate(parseInt(operandList[0]), parseInt(operandList[1]), operator);
+}
+
+btnCompute.addEventListener("click", () => {
+  displayText.textContent = computeOutput(displayValue);
+});
+
+// Clear Functionality
+
+const btnAllClear = document.querySelector(".btn-allclear");
+const btnClear = document.querySelector(".btn-clear");
