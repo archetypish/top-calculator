@@ -60,18 +60,19 @@ function operate(operandA, operandB, operator) {
 // Get the DOM object for all the calculator keys
 
 // digits
-const digit1 = document.querySelector(".digit-1");
-const digit2 = document.querySelector(".digit-2");
-const digit3 = document.querySelector(".digit-3");
-const digit4 = document.querySelector(".digit-4");
-const digit5 = document.querySelector(".digit-5");
-const digit6 = document.querySelector(".digit-6");
-const digit7 = document.querySelector(".digit-7");
-const digit8 = document.querySelector(".digit-8");
-const digit9 = document.querySelector(".digit-9");
-const digit0 = document.querySelector(".digit-0");
-const digit00 = document.querySelector(".digit-00");
-const digitDot = document.querySelector(".digit-dot");
+const digits = document.querySelectorAll(".btn-digit");
+
+// display value
+const displayText = document.querySelector(".display-text");
+
+// loop over digits and apply click event listener to each digit button
+digits.forEach((item) => {
+  item.addEventListener("click", (event) => {
+    console.log(event.target.textContent);
+    displayText.textContent += event.target.textContent;
+  });
+});
+// for click event, run a callback to print the text content on display text
 
 // calcullations
 const btnEq = document.querySelector(".btn-eq");
