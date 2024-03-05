@@ -136,4 +136,10 @@ btnCompute.addEventListener("click", () => {
 // Clear Functionality
 
 const btnAllClear = document.querySelector(".btn-allclear");
+
+btnAllClear.addEventListener("click", (event) => {
+  displayText.textContent = "";
+  displayValue = "";
+});
+
 const btnClear = document.querySelector(".btn-clear");
