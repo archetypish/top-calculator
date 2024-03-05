@@ -68,13 +68,15 @@ let displayValue;
 
 // loop over digits and apply click event listener to each digit button
 // for click event, run a callback to print the text content on display text
+function updateDisplay(event) {
+  // console.log(event.target.textContent);
+  displayText.textContent += event.target.textContent;
+  // store the display value to use later
+  displayValue = displayText.textContent;
+}
+
 digits.forEach((item) => {
-  item.addEventListener("click", (event) => {
-    // console.log(event.target.textContent);
-    displayText.textContent += event.target.textContent;
-    // store the display value to use later
-    displayValue = displayText.textContent;
-  });
+  item.addEventListener("click", updateDisplay);
 });
 
 // calculations
@@ -82,11 +84,12 @@ const btnFunc = document.querySelectorAll(".btn-func");
 
 btnFunc.forEach((item) => {
   item.addEventListener("click", (event) => {
-    // console.log(event.target.textContent);
-    displayText.textContent += ` ${event.target.textContent} `;
-    // store the display value to use later
-    displayValue = displayText.textContent;
+    // update operator variable
+    operator = event.target.textContent;
+    updateDisplay(event);
   });
+  // if there is an operator and 2 operands perform computation
+  // otherwise just update display
 });
 
 // others
@@ -95,18 +98,26 @@ const btnAllClear = document.querySelector(".btn-allclear");
 const btnClear = document.querySelector(".btn-clear");
 
 // Make the calculator work
-// once the equal button is clicked:
-// Store the values and the operator
+// once the equal button or second operator button is clicked:
+// Store the 2 values and the operator on screen
 // call the operator function
 // update the display text with the solution
-let operandList;
+// continue with next set of operator and operand
 
-btnCompute.addEventListener("click", (event) => {
-  console.log(displayValue.split(" "));
+function computeOutput(event) {
+  // get the operands and operator
 
-  //   displayText.textContent = operate(
-  //     parseInt(operandList[0]),
-  //     parseInt(operandList[1]),
-  //     operator
-  //   );
-});
+  // if you have the operator then it is pretty easy to split it
+  console.log(typeof displayValue);
+  let operandList = displayValue.split(operator);
+  console.log(
+    operate(parseInt(operandList[0]), parseInt(operandList[1]), operator)
+  );
+  displayText.textContent = operate(
+    parseInt(operandList[0]),
+    parseInt(operandList[1]),
+    operator
+  );
+}
+
+btnCompute.addEventListener("click", computeOutput);
