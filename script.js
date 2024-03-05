@@ -84,8 +84,6 @@ btnFunc.forEach((item) => {
   item.addEventListener("click", (event) => {
     // console.log(event.target.textContent);
     displayText.textContent += ` ${event.target.textContent} `;
-    // store the operator
-    operator = event.target.textContent;
     // store the display value to use later
     displayValue = displayText.textContent;
   });
@@ -104,10 +102,11 @@ const btnClear = document.querySelector(".btn-clear");
 let operandList;
 
 btnCompute.addEventListener("click", (event) => {
-  operandList = displayValue.split(operator);
-  displayText.textContent = operate(
-    parseInt(operandList[0]),
-    parseInt(operandList[1]),
-    operator
-  );
+  console.log(displayValue.split(" "));
+
+  //   displayText.textContent = operate(
+  //     parseInt(operandList[0]),
+  //     parseInt(operandList[1]),
+  //     operator
+  //   );
 });
