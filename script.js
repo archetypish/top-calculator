@@ -159,3 +159,21 @@ btnClear.addEventListener("click", backspace);
 
 // Encapsulate event handlers into functions
 // Trigger these functions once appropriate key is pressed
+
+function appendDisplayFromKeyboard(event) {
+  displayText.textContent += event.key;
+  // store the display value to use later
+  displayValue = displayText.textContent;
+}
+
+// Keyboard support for entering numbers
+let keyCodeList = [];
+for (let i = 0; i <= 9; i++) {
+  keyCodeList.push(`Digit${i}`);
+}
+
+document.addEventListener("keydown", (event) => {
+  if (keyCodeList.includes(event.code)) {
+    appendDisplayFromKeyboard(event);
+  }
+});
