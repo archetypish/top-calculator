@@ -167,13 +167,43 @@ function appendDisplayFromKeyboard(event) {
 }
 
 // Keyboard support for entering numbers
-let keyCodeList = [];
+let numericKeyCodeList = [];
 for (let i = 0; i <= 9; i++) {
-  keyCodeList.push(`Digit${i}`);
+  numericKeyCodeList.push(`Digit${i}`);
 }
 
+let operatorKeyCodeList = [];
+operatorKeyCodeList.push("NumpadAdd");
+operatorKeyCodeList.push("NumpadSubtract");
+operatorKeyCodeList.push("NumpadMultiply");
+operatorKeyCodeList.push("NumpadDivide");
+console.log(operatorKeyCodeList);
+
+//// Keyboard support for
+// / NumpadDivide
+// * NumpadMultiply
+// - NumpadSubtract
+// + NumpadAdd
+
 document.addEventListener("keydown", (event) => {
-  if (keyCodeList.includes(event.code)) {
+  console.log(event.code);
+  // if number key is pressed then add numbers to the screen
+  if (numericKeyCodeList.includes(event.code)) {
     appendDisplayFromKeyboard(event);
+  } else if (operatorKeyCodeList.includes(event.code)) {
+    addOperatorFromKeyboard(event);
   }
+
+  // if operator key is pressed, then execute if possible, then add the operator
 });
+
+function addOperatorFromKeyboard(event) {
+  console.log("Calling execution");
+  console.log(`displayValue ${displayValue}`);
+  // first evaluate expression if it exists
+  getOutput(displayValue);
+
+  // update the display area with operator
+  appendDisplayFromKeyboard(event);
+  operator = event.key;
+}
