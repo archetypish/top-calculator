@@ -103,8 +103,9 @@ function getOutput(displayValue) {
   let operandList = getOperandsIntoList(displayValue);
   if (operandList.length > 1) {
     let result = operate(
-      parseInt(operandList[0]),
-      parseInt(operandList[1]),
+      // Handle both floating point and integers
+      Number(operandList[0]),
+      Number(operandList[1]),
       operator
     );
     displayText.textContent = result;
