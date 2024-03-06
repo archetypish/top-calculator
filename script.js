@@ -144,7 +144,6 @@ const btnClear = document.querySelector(".btn-clear");
 const digitDot = document.querySelector(".digit-dot");
 
 digitDot.addEventListener("click", (event) => {
-  console.log(typeof displayValue);
   let currentOperand = getOperandsIntoList(displayValue).at(-1);
   //   console.log(typeof currentOperand);
   if (!String(currentOperand).includes(".")) {
