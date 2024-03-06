@@ -128,27 +128,27 @@ btnAllClear.addEventListener("click", (event) => {
   displayValue = "";
 });
 
-const btnClear = document.querySelector(".btn-clear");
-
 // Decimal functionality
-
-// check if there is decimal on the current operand
-// that is if the value of the last operand has decimal
-
-// if there is then don't do anything
-// else add it to the screen
-
-// handle first input as decimal
-// displayValue is not defined
 
 const digitDot = document.querySelector(".digit-dot");
 
 digitDot.addEventListener("click", (event) => {
   let currentOperand = getOperandsIntoList(displayValue).at(-1);
-  //   console.log(typeof currentOperand);
   if (!String(currentOperand).includes(".")) {
-    // add it to the screen
     appendDisplay(event);
   }
-  //   else do nothing
+});
+
+// Backspace Functionality
+const btnClear = document.querySelector(".btn-clear");
+
+// remove one character from display Value and displayText
+
+// remove from displayText
+
+// update displayValue
+
+btnClear.addEventListener("click", (event) => {
+  displayText.textContent = displayValue.slice(0, displayValue.length - 1);
+  displayValue = displayText.textContent;
 });
