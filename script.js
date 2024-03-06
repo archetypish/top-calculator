@@ -80,15 +80,17 @@ digits.forEach((item) => {
 // calculations
 const btnFunc = document.querySelectorAll(".btn-func");
 
-btnFunc.forEach((item) => {
-  item.addEventListener("click", (event) => {
-    // first evaluate expression if it exists
-    getOutput(displayValue);
+function addOperator(event) {
+  // first evaluate expression if it exists
+  getOutput(displayValue);
 
-    // update the display area with operator
-    appendDisplay(event);
-    operator = event.target.textContent;
-  });
+  // update the display area with operator
+  appendDisplay(event);
+  operator = event.target.textContent;
+}
+
+btnFunc.forEach((item) => {
+  item.addEventListener("click", addOperator);
 });
 
 // others
@@ -121,34 +123,39 @@ btnCompute.addEventListener("click", () => {
 
 // Clear Functionality
 
-const btnAllClear = document.querySelector(".btn-allclear");
-
-btnAllClear.addEventListener("click", (event) => {
+function clearDisplay(event) {
   displayText.textContent = "";
   displayValue = "";
-});
+}
+
+const btnAllClear = document.querySelector(".btn-allclear");
+
+btnAllClear.addEventListener("click", clearDisplay);
 
 // Decimal functionality
 
 const digitDot = document.querySelector(".digit-dot");
 
-digitDot.addEventListener("click", (event) => {
+function addDecimal(event) {
   let currentOperand = getOperandsIntoList(displayValue).at(-1);
   if (!String(currentOperand).includes(".")) {
     appendDisplay(event);
   }
-});
+}
+
+digitDot.addEventListener("click", addDecimal);
 
 // Backspace Functionality
 const btnClear = document.querySelector(".btn-clear");
 
-// remove one character from display Value and displayText
-
-// remove from displayText
-
-// update displayValue
-
-btnClear.addEventListener("click", (event) => {
+function backspace(event) {
   displayText.textContent = displayValue.slice(0, displayValue.length - 1);
   displayValue = displayText.textContent;
-});
+}
+
+btnClear.addEventListener("click", backspace);
+
+// Add Keyboard support
+
+// Encapsulate event handlers into functions
+// Trigger these functions once appropriate key is pressed
