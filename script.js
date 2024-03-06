@@ -96,16 +96,17 @@ const btnCompute = document.querySelector(".btn-eq");
 
 function getOperandsIntoList(str) {
   let lst = str.split(operator);
-  return lst.map((item) => parseInt(item));
+  return lst.map((item) => Number(item));
 }
 
 function getOutput(displayValue) {
   let operandList = getOperandsIntoList(displayValue);
+
   if (operandList.length > 1) {
     let result = operate(
       // Handle both floating point and integers
-      Number(operandList[0]),
-      Number(operandList[1]),
+      operandList[0],
+      operandList[1],
       operator
     );
     displayText.textContent = result;
