@@ -63,7 +63,7 @@ const digits = document.querySelectorAll(".btn-digit");
 
 // display value
 const displayText = document.querySelector(".display-text");
-let displayValue;
+let displayValue = "";
 
 // loop over digits and apply click event listener to each digit button
 // for click event, run a callback to print the text content on display text
@@ -138,11 +138,15 @@ const btnClear = document.querySelector(".btn-clear");
 // if there is then don't do anything
 // else add it to the screen
 
+// handle first input as decimal
+// displayValue is not defined
+
 const digitDot = document.querySelector(".digit-dot");
 
 digitDot.addEventListener("click", (event) => {
+  console.log(typeof displayValue);
   let currentOperand = getOperandsIntoList(displayValue).at(-1);
-  console.log(typeof currentOperand);
+  //   console.log(typeof currentOperand);
   if (!String(currentOperand).includes(".")) {
     // add it to the screen
     appendDisplay(event);
