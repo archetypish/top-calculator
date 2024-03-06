@@ -110,6 +110,8 @@ function getOutput(displayValue) {
       operator
     );
     displayText.textContent = result;
+    // update display Value
+    displayValue = displayText.textContent;
   }
 }
 
@@ -127,3 +129,23 @@ btnAllClear.addEventListener("click", (event) => {
 });
 
 const btnClear = document.querySelector(".btn-clear");
+
+// Decimal functionality
+
+// check if there is decimal on the current operand
+// that is if the value of the last operand has decimal
+
+// if there is then don't do anything
+// else add it to the screen
+
+const digitDot = document.querySelector(".digit-dot");
+
+digitDot.addEventListener("click", (event) => {
+  let currentOperand = getOperandsIntoList(displayValue).at(-1);
+  console.log(typeof currentOperand);
+  if (!String(currentOperand).includes(".")) {
+    // add it to the screen
+    appendDisplay(event);
+  }
+  //   else do nothing
+});

@@ -124,11 +124,13 @@ li .btn {
 }
 
 /* Colors to numbers */
-.btn-digit {
+.btn-digit,
+.digit-dot {
   background-color: #c1eff0;
 }
 
-.btn-digit:active {
+.btn-digit:active,
+.digit-dot:active {
   background-color: #92b4b4;
 }
 
